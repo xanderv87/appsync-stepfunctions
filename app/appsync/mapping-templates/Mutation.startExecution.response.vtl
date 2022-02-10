@@ -1,0 +1,6 @@
+#set( $result = $util.parseJson($ctx.result.body) )
+
+#set( $startDateMs = $result.startDate * 1000)
+$util.qr($result.put("startDate", $util.time.epochMilliSecondsToISO8601( $util.math.roundNum($startDateMs))))
+
+$util.toJson($result)

@@ -1,0 +1,11 @@
+#set( $result = $util.parseJson($ctx.result.body) )
+
+#foreach($item in $result.executions)
+	#set( $startDateMs = $item.startDate * 1000)
+	#set( $stopDateMs = $item.startDate * 1000)
+	$util.qr($item.put("startDate", $util.time.epochMilliSecondsToISO8601( $util.math.roundNum($startDateMs))))
+	$util.qr($item.put("stopDate", $util.time.epochMilliSecondsToISO8601( $util.math.roundNum($stopDateMs))))
+#end
+
+
+$util.toJson($result)

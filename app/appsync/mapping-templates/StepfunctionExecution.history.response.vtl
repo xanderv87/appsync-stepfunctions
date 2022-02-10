@@ -1,0 +1,9 @@
+#set( $result = $util.parseJson($ctx.result.body) )
+
+#foreach($item in $result.events)
+	#set( $timestampMs = $item.timestamp * 1000)
+	$util.qr($item.put("timestamp", $util.time.epochMilliSecondsToISO8601( $util.math.roundNum($timestampMs))))
+#end
+
+
+$util.toJson($result)

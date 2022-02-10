@@ -1,0 +1,7 @@
+type Query {
+    listExecutions(stepstatus: String, maxItems: Int): StepfunctionExecutionConnection
+}
+
+type Mutation {
+    startExecution(isHelloWorldExample: Boolean): StepfunctionExecution
+}

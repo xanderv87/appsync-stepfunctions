@@ -1,0 +1,32 @@
+type ExecutionHistory
+  {
+  events: [ExecutionHistoryEvent!]!
+}
+
+type ExecutionHistoryEvent
+   {
+  timestamp: AWSDateTime
+  type: String
+  id: Int
+  previousEventId: Int
+  executionStartedEventDetails: AWSJSON
+  stateEnteredEventDetails: AWSJSON
+  executionFailedEventDetails: AWSJSON
+}
+
+
+type StepfunctionExecution
+   {
+  executionArn: String
+  stateMachineArn: String
+  name: String
+  status: String
+  startDate: String
+  stopDate: String
+  history: ExecutionHistory
+}
+
+type StepfunctionExecutionConnection
+   {
+  executions: [StepfunctionExecution]
+}
